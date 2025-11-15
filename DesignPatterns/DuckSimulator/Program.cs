@@ -11,6 +11,9 @@ namespace StrategyPatternApp
             Duck mallardDuck = new MallardDuck(new FlyWithWings(), new Quack());
             DuckSimulator duckSimulator = new DuckSimulator(mallardDuck);
             duckSimulator.performDuckActions();
+            // Changable Behaviour
+            mallardDuck.SetQuackBehaviour(new MuteQuack());
+            duckSimulator.performDuckActions();
         }
     }
 }

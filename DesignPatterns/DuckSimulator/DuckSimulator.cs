@@ -11,9 +11,9 @@ namespace StrategyPatternApp
         }
         public void performDuckActions()
         {
+            _duck.Display();
             _duck.PerformFly();
             _duck.PerformQuack();
-            _duck.Display();
             _duck.Swim();
         }
     }
