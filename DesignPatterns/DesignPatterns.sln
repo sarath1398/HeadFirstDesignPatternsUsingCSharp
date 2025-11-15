@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36623.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyPattern", "StrategyPattern\StrategyPattern.csproj", "{64129C2E-8A3F-47FF-99C7-E8D3A8BF5189}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuckSimulator", "DuckSimulator\DuckSimulator.csproj", "{899DA13A-AEBC-4E5C-AF1A-31F39257CCBA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Strategy Pattern", "Strategy Pattern", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64129C2E-8A3F-47FF-99C7-E8D3A8BF5189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64129C2E-8A3F-47FF-99C7-E8D3A8BF5189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64129C2E-8A3F-47FF-99C7-E8D3A8BF5189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64129C2E-8A3F-47FF-99C7-E8D3A8BF5189}.Release|Any CPU.Build.0 = Release|Any CPU
+		{899DA13A-AEBC-4E5C-AF1A-31F39257CCBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{899DA13A-AEBC-4E5C-AF1A-31F39257CCBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{899DA13A-AEBC-4E5C-AF1A-31F39257CCBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{899DA13A-AEBC-4E5C-AF1A-31F39257CCBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{64129C2E-8A3F-47FF-99C7-E8D3A8BF5189} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{899DA13A-AEBC-4E5C-AF1A-31F39257CCBA} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C81748F-AD90-4667-AF60-30672683802B}
+	EndGlobalSection
+EndGlobal
