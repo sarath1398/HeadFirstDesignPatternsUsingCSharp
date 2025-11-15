@@ -1,0 +1,28 @@
+# Build artifacts
+bin/
+obj/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# VS folders
+.vs/
+.vscode/
+
+# NuGet packages
+packages/
+*.nupkg
+*.snupkg
+
+# Entity Framework
+*.dbmdl
+Migrations/
+
+# Others
+*.log
+*.cache
+*.pdb
+*.tmp
