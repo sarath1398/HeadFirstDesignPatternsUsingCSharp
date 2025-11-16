@@ -7,6 +7,13 @@ namespace WeatherStationDependencies.Classes.WeatherDisplays
         private double _temperature;
         private double _humidity;
         private double _pressure;
+        private WeatherData _weatherData;
+
+        public CurrentConditionsDisplay(WeatherData weatherData)
+        {
+            _weatherData = weatherData;
+            _weatherData.AddObserver(this);
+        }
 
         public void Update(double temperature, double humidity, double pressure)
         {

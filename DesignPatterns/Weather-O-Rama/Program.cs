@@ -8,18 +8,18 @@ namespace Weather_O_Rama
     {
         public static void Main(string[] args)
         {
-            IObserver forecast = new ForecastDisplay();
-            IObserver statistics = new StatisticsDisplay();
-            IObserver currentConditions = new CurrentConditionsDisplay();
             WeatherData data = new();
-
-            data.AddObserver(forecast);
-            data.AddObserver(statistics);
-            data.AddObserver(currentConditions);
+            IObserver forecast = new ForecastDisplay(data);
+            IObserver statistics = new StatisticsDisplay(data);
+            IObserver currentConditions = new CurrentConditionsDisplay(data);
+            
 
             data.MeasurementsChanged(40, 25, 30);
             data.RemoveObserver(forecast);
             data.MeasurementsChanged(35, 40, 90);
+            data.AddObserver(forecast);
+            data.RemoveObserver(currentConditions);
+            data.MeasurementsChanged(37,64,55);
         }
     }
 }

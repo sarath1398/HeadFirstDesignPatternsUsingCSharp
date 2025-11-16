@@ -8,6 +8,13 @@ namespace WeatherStationDependencies.Classes.WeatherDisplays
         private double _humidity;
         private double _pressure;
         private int _updateCount = 0;
+        private WeatherData _weatherData;
+
+        public StatisticsDisplay(WeatherData weatherData)
+        {
+            _weatherData = weatherData;
+            _weatherData.AddObserver(this);
+        }
 
         public void Update(double temperature, double humidity, double pressure)
         {
