@@ -7,5 +7,6 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
 <ul>
   <li>Strategy Pattern - DuckSimulator.csproj</li>
   <li>Observer Pattern - Weather-O-Rama.csproj</li>
+  <li>Decorator Pattern - StarBuzzApp.csproj</li>
 </ul>
 
