@@ -21,6 +21,9 @@
             return type switch
             {
                 "Cheese" => new NYStyleCheesePizza(),
+                "Veggie" => new NYStyleVeggiePizza(),
+                "Clam" => new NYStyleClamPizza(),
+                "Pepperoni" => new NYStylePepperoniPizza(),
                 _ => throw new ArgumentException("Invalid Pizza Name")
             };
         }
@@ -33,6 +36,9 @@
             return type switch
             {
                 "Cheese" => new ChicagoStyleCheesePizza(),
+                "Veggie" => new ChicagoStyleVeggiePizza(),
+                "Clam" => new ChicagoStyleClamPizza(),
+                "Pepperoni" => new ChicagoStylePepperoniPizza(),
                 _ => throw new ArgumentException("Invalid Pizza Name")
             };
         }
