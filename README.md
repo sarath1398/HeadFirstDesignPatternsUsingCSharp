@@ -11,5 +11,6 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
   <li>Simple Factory (Honorary Mention in Factory chapter) - SimpleFactory.csproj</li>
   <li>Factory Method Pattern - PizzaTestDrive.csproj</li>
   <li>Abstract Factory Pattern - ObjectVillePizzaStore.csproj</li>
+  <li>Singleton Pattern - ChocolateFactory.csproj</li>
 </ul>
 
