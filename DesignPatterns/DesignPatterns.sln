@@ -42,6 +42,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractFactoryPizzaDepende
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectVillePizzaStore", "ObjectVillePizzaStore\ObjectVillePizzaStore.csproj", "{48759DFB-4E0B-4370-A46B-D5233F135F94}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Singleton Pattern", "Singleton Pattern", "{7A1C7E65-C82B-49FD-8339-4097090F8419}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChocolateFactory", "ChocolateFactory\ChocolateFactory.csproj", "{9C2CE6DD-78A6-4771-8FD2-32FA05EBD55C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +100,10 @@ Global
 		{48759DFB-4E0B-4370-A46B-D5233F135F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48759DFB-4E0B-4370-A46B-D5233F135F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48759DFB-4E0B-4370-A46B-D5233F135F94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C2CE6DD-78A6-4771-8FD2-32FA05EBD55C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C2CE6DD-78A6-4771-8FD2-32FA05EBD55C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C2CE6DD-78A6-4771-8FD2-32FA05EBD55C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C2CE6DD-78A6-4771-8FD2-32FA05EBD55C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,6 +126,8 @@ Global
 		{BB4736D8-36FC-4267-8183-B40AC20A997B} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
 		{C2182ADF-8B4D-4116-8E75-ACFEFB302C8C} = {BB4736D8-36FC-4267-8183-B40AC20A997B}
 		{48759DFB-4E0B-4370-A46B-D5233F135F94} = {BB4736D8-36FC-4267-8183-B40AC20A997B}
+		{7A1C7E65-C82B-49FD-8339-4097090F8419} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
+		{9C2CE6DD-78A6-4771-8FD2-32FA05EBD55C} = {7A1C7E65-C82B-49FD-8339-4097090F8419}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C81748F-AD90-4667-AF60-30672683802B}
