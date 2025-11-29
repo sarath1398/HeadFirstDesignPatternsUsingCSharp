@@ -14,5 +14,6 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
   <li>Singleton Pattern - ChocolateFactory.csproj</li>
   <li>Command Pattern - RemoteLoader.csproj</li>
   <li>Adapter Pattern - DuckTestDrive.csproj</li>
+  <li>Facade Pattern - HomeTheaterTestDrive.csproj</li>
 </ul>
 
