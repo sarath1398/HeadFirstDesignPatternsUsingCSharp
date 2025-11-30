@@ -16,5 +16,6 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
   <li>Adapter Pattern - DuckTestDrive.csproj</li>
   <li>Facade Pattern - HomeTheaterTestDrive.csproj</li>
   <li>Template Method Pattern - BeverageTestDrive.csproj / DuckExample.csproj</li>
+  <li>Iterator Pattern - CafeTestDrive.csproj</li>
 </ul>
 
