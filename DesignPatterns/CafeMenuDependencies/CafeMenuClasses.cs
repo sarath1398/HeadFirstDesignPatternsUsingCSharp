@@ -39,7 +39,7 @@
 
         public class PancakeHouseMenu : IMenu
         {
-            private List<MenuItem> _menuItems;
+            private readonly List<MenuItem> _menuItems;
 
             public PancakeHouseMenu()
             {
@@ -63,7 +63,7 @@
         {
             public readonly static int MAX_ITEMS = 6;
             private int _numberOfItems = 0;
-            private MenuItem[] _menuItems;
+            private readonly MenuItem[] _menuItems;
 
             public DinerMenu()
             {

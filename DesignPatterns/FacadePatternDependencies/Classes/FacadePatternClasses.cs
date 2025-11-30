@@ -4,7 +4,6 @@ namespace FacadePatternDependencies.Classes
 {
     public static class FacadePatternClasses
     {
-        // TODO: Update all the Console Writes as per the book
 
         #region Classes
         public class Amplifier
