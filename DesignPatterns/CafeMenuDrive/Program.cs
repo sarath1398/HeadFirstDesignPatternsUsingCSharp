@@ -8,8 +8,9 @@ namespace CafeMenuDrive
         {
             PancakeHouseMenu pancakeHouseMenu = new();
             DinerMenu dinerMenu = new();
+            CafeMenu cafeMenu = new();
 
-            Waitress waitress = new(pancakeHouseMenu, dinerMenu);
+            Waitress waitress = new(pancakeHouseMenu, dinerMenu,cafeMenu);
 
             waitress.PrintMenu();
         }

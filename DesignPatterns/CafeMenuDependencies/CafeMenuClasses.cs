@@ -1,4 +1,7 @@
-﻿namespace CafeMenuDependencies
+﻿using System.Collections;
+using static System.Collections.Generic.Dictionary<string, CafeMenuDependencies.CafeMenuClasses.MenuItem>;
+
+namespace CafeMenuDependencies
 {
     public class CafeMenuClasses
     {
@@ -57,6 +60,8 @@
             }
 
             public IIterator CreateIterator() => new PancakeHouseMenuIterator(_menuItems);
+
+            public IEnumerator CreateEnumerator() => new PancakeHouseMenuEnumerator(_menuItems);
         }
 
         public class DinerMenu : IMenu
@@ -90,6 +95,32 @@
             }
 
             public IIterator CreateIterator() => new DinerMenuIterator(_menuItems);
+
+            public IEnumerator CreateEnumerator() => new DinerMenuEnumerator(_menuItems);
+        }
+
+        public class CafeMenu : IMenu
+        {
+            private readonly Dictionary<string, MenuItem> _cafeItems;
+
+            public CafeMenu()
+            {
+                _cafeItems = [];
+
+                AddItem("Veggie Burger and Air Fries","Veggie burger on a whole wheat bun, lettuce, tomato, and fries",true, 3.99);
+                AddItem("Soup of the day","A cup of the soup of the day, with a side salad",false, 3.69);
+                AddItem("Burrito","A large burrito, with whole pinto beans, salsa, guacamole",true, 4.29);
+            }
+
+            public void AddItem(string name, string description, bool vegetarian, double price)
+            {
+                MenuItem menuItem = new(name, description, vegetarian, price);
+                _cafeItems[name] = menuItem;
+            }
+
+            public IIterator CreateIterator() => new CafeMenuIterator(_cafeItems.Values);
+
+            public IEnumerator CreateEnumerator() => new CafeMenuEnumerator(_cafeItems);
         }
 
         public class PancakeHouseMenuIterator(List<MenuItem> menuItems) : IIterator
@@ -123,20 +154,132 @@
             public bool HasNext() => !(_position >= DinerMenu.MAX_ITEMS || _items[_position] == null);
         }
 
-        public class Waitress(PancakeHouseMenu pancakeHouseMenu, DinerMenu dinerMenu)
+        public class CafeMenuIterator(ValueCollection cafeItems) : IIterator
         {
-            private readonly PancakeHouseMenu pancakeHouseMenu = pancakeHouseMenu;
-            private readonly DinerMenu dinerMenu = dinerMenu;
+            private readonly ValueCollection _cafeItems = cafeItems;
+            private int _position = 0;
+
+            public MenuItem Next()
+            {
+                MenuItem menuItem = _cafeItems.ElementAt(_position);
+                _position++;
+                return menuItem;
+            }
+
+            public bool HasNext() => !(_position >= _cafeItems.Count || _cafeItems.ElementAtOrDefault(_position) == null);
+        }
+
+        public class PancakeHouseMenuEnumerator(List<MenuItem> menuItems) : IEnumerator<MenuItem>
+        {
+            private readonly List<MenuItem> _items = menuItems;
+            private int _position = -1;
+            public MenuItem Current
+            {
+                get
+                {
+                    if (_position < 0 || _position >= _items.Count)
+                        throw new InvalidOperationException();
+                    return _items[_position];
+                }
+            }
+
+            object IEnumerator.Current => Current;
+
+            public void Dispose() => throw new NotImplementedException();
+
+            public bool MoveNext()
+            {
+                _position++;
+                return _position < _items.Count;
+            }
+
+            public void Reset()
+            {
+                _position = -1;
+            }
+        }
+
+        public class DinerMenuEnumerator(MenuItem[] menuItems) : IEnumerator<MenuItem>
+        {
+            private readonly MenuItem[] _items = menuItems;
+            private int _position = -1;
+            public MenuItem Current => (_position < 0 || _position >= _items.Length) ? throw new InvalidOperationException() : _items[_position];
+
+            object IEnumerator.Current => Current;
+
+            public void Dispose() => throw new NotImplementedException();
+
+            public bool MoveNext()
+            {
+                do
+                {
+                    _position++;
+                } while (_position < _items.Length && _items[_position] == null);
+                
+                return _position < _items.Length;
+            }
+
+            public void Reset()
+            {
+                _position = -1;
+            }
+        }
+
+        public class CafeMenuEnumerator(Dictionary<string, MenuItem> itemPairs) : IEnumerator
+        {
+            private readonly Dictionary<string, MenuItem> _itemPairs = itemPairs;
+            object IEnumerator.Current => Current;
+            private int _position = -1;
+            public MenuItem Current => (_position < 0 || _position >= _itemPairs.Count) ?
+                throw new InvalidOperationException() : _itemPairs.Values.ElementAt(_position);
+
+            public void Dispose() => throw new NotImplementedException();
+
+            public bool MoveNext()
+            {
+                _position++;
+                return _position < _itemPairs.Count;
+            }
+
+            public void Reset()
+            {
+                _position = -1;
+            }
+        }
+
+        public class Waitress(PancakeHouseMenu pancakeHouseMenu, DinerMenu dinerMenu, CafeMenu cafeMenu)
+        {
+            private readonly PancakeHouseMenu _pancakeHouseMenu = pancakeHouseMenu;
+            private readonly DinerMenu _dinerMenu = dinerMenu;
+            private readonly CafeMenu _cafeMenu = cafeMenu;
 
             public void PrintMenu()
             {
-                IIterator pancakeIterator = pancakeHouseMenu.CreateIterator();
-                IIterator dinerIterator = dinerMenu.CreateIterator();
+                IIterator pancakeIterator = _pancakeHouseMenu.CreateIterator();
+                IIterator dinerIterator = _dinerMenu.CreateIterator();
+                IIterator cafeMenuIterator = _cafeMenu.CreateIterator();
+                IEnumerator pancakeEnumerator = _pancakeHouseMenu.CreateEnumerator();
+                IEnumerator dinerEnumerator = _dinerMenu.CreateEnumerator();
+                IEnumerator cafeMenuEnumerator = _cafeMenu.CreateEnumerator();
+
+                // Custom Iterator version
 
                 Console.WriteLine("MENU\n----\nBREAKFAST");
                 PrintMenu(pancakeIterator);
                 Console.WriteLine("\nLUNCH");
                 PrintMenu(dinerIterator);
+                Console.WriteLine("\nDINNER");
+                PrintMenu(cafeMenuIterator);
+
+                // Enumerator version
+
+                Console.WriteLine("MENU\n----\nBREAKFAST");
+                PrintMenu(pancakeEnumerator);
+                Console.WriteLine("\nLUNCH");
+                PrintMenu(dinerEnumerator);
+                Console.WriteLine("\nDINNER");
+                PrintMenu(cafeMenuEnumerator);
+
             }
 
             private void PrintMenu(IIterator iterator)
@@ -144,6 +287,17 @@
                 while (iterator.HasNext())
                 {
                     MenuItem menuItem = iterator.Next();
+                    Console.WriteLine(menuItem.GetName() + ", ");
+                    Console.WriteLine(menuItem.GetPrice() + " -- ");
+                    Console.WriteLine(menuItem.GetDescription());
+                }
+            }
+
+            private void PrintMenu(IEnumerator enumerator)
+            {
+                while(enumerator.MoveNext())
+                {
+                    MenuItem menuItem = (MenuItem)enumerator.Current;
                     Console.WriteLine(menuItem.GetName() + ", ");
                     Console.WriteLine(menuItem.GetPrice() + " -- ");
                     Console.WriteLine(menuItem.GetDescription());
