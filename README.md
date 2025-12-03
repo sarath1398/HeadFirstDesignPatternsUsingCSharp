@@ -18,5 +18,6 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
   <li>Template Method Pattern - BeverageTestDrive.csproj / DuckExample.csproj</li>
   <li>Iterator Pattern - CafeTestDrive.csproj</li>
   <li>Composite Pattern - MenuTestDrive.csproj</li>
+  <li>State pattern - GumballMachineTestDrive.csproj</li>
 </ul>
 
