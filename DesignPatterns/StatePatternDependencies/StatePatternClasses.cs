@@ -170,7 +170,7 @@
 
             public void InsertQuarter()
             {
-                _gumballMachine.SetState(new HasQuarterState(_gumballMachine));
+                _gumballMachine.SetState(_gumballMachine.GetHasQuarterState());
                 Console.WriteLine("You inserted a quarter");
             }
 
@@ -189,14 +189,14 @@
             
             public void EjectQuarter()
             {
-                _gumballMachine.SetState(new NoQuarterState(_gumballMachine));
+                _gumballMachine.SetState(_gumballMachine.GetNoQuarterState());
                 Console.WriteLine("Quarter returned");
             }
 
             public void TurnCrank()
             {
                 Console.WriteLine("You turned...");
-                _gumballMachine.SetState(new SoldState(_gumballMachine));
+                _gumballMachine.SetState(_gumballMachine.GetSoldState());
                 _gumballMachine.Dispense();
             }
 
@@ -205,7 +205,7 @@
 
         public class SoldState(GumballMachineWithStatePatternImplementation gumballMachineWithState) : IState
         {
-            private GumballMachineWithStatePatternImplementation _gumballMachine = gumballMachineWithState;
+            private readonly GumballMachineWithStatePatternImplementation _gumballMachine = gumballMachineWithState;
 
             public void InsertQuarter() => Console.WriteLine("Please wait, we're already giving you a gumball");
 
@@ -221,11 +221,11 @@
                 if (gumballCount - 1 == 0)
                 {
                     Console.WriteLine("Oops, out of gumballs!");
-                    _gumballMachine.SetState(new SoldOutState(_gumballMachine));
+                    _gumballMachine.SetState(_gumballMachine.GetSoldState());
                 }
                 else
                 {
-                    _gumballMachine.SetState(new NoQuarterState(_gumballMachine));
+                    _gumballMachine.SetState(_gumballMachine.GetNoQuarterState());
                 }
             }
         }
@@ -235,16 +235,26 @@
             private int _count = 0;
             private IState _gumballState;
 
+            private IState _soldOutState;
+            private IState _soldState;
+            private IState _hasQuarterState;
+            private IState _noQuarterState;
+
             public GumballMachineWithStatePatternImplementation(int count)
             {
                 _count = count;
+                _soldOutState = new SoldOutState(this);
+                _soldState = new SoldState(this);
+                _hasQuarterState = new HasQuarterState(this);
+                _noQuarterState = new NoQuarterState(this);
+
                 if (_count < 0)
                 {
-                    _gumballState = new SoldOutState(this);
+                    _gumballState = _soldOutState;
                 }
                 else
                 {
-                    _gumballState = new NoQuarterState(this);
+                    _gumballState = _noQuarterState;
                 }
             }
 
@@ -261,6 +271,14 @@
             public void SetCount(int count) => _count = count;
 
             public int GetCount() => _count;
+
+            public IState GetSoldOutState() => _soldOutState;
+
+            public IState GetSoldState() => _soldState;
+
+            public IState GetHasQuarterState() => _hasQuarterState;
+
+            public IState GetNoQuarterState() => _noQuarterState;
 
             public override string ToString()
             {
