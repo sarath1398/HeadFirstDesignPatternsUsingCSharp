@@ -19,5 +19,6 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
   <li>Iterator Pattern - CafeTestDrive.csproj</li>
   <li>Composite Pattern - MenuTestDrive.csproj</li>
   <li>State pattern - GumballMachineTestDrive.csproj</li>
+  <li>Proxy Pattern - MatchMakingTestDrive.csproj</li>
 </ul>
 
