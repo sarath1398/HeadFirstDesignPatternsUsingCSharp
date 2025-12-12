@@ -26,7 +26,7 @@ namespace DuckSimulatorTestDrive
             Simulate(rubberDuck);
             Simulate(gooseAdapter);
 
-            Console.WriteLine("Total count of Duck Quacks : " + QuackCounterDecorator.GetQuacks());
+            Console.WriteLine("The ducks quacked " + QuackCounterDecorator.GetQuacks() + " times");
         }
 
         void Simulate(IQuackable quackable) => quackable.Quack();
