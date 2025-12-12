@@ -1,6 +1,4 @@
-﻿using static CompoundPatternDependencies.Interfaces;
-
-namespace CompoundPatternDependencies
+﻿namespace CompoundPatternDependencies
 {
     public class Interfaces
     {
