@@ -41,6 +41,9 @@ namespace DuckSimulatorTestDrive
 
             flockOfDucks.Add(flockOfMallardDucks);
 
+            Quackologist quackologist = new Quackologist();
+            flockOfDucks.RegisterObserver(quackologist);
+
             Console.WriteLine("\nDuck Simulator: Whole Flock Simulation");
             Simulate(flockOfDucks);
             Console.WriteLine("\nDuck Simulator: Mallard Flock Simulation");

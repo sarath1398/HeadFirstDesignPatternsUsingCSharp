@@ -1,27 +1,129 @@
-﻿using static CompoundPatternDependencies.Interfaces;
+﻿using System;
+using static CompoundPatternDependencies.Classes;
+using static CompoundPatternDependencies.Interfaces;
 
 namespace CompoundPatternDependencies
 {
     public class Classes
     {
+        public class Observable(IQuackObservable duck) : IQuackObservable
+        {
+            private readonly List<IObserver> _observers = new();
+            private readonly IQuackObservable _duck = duck;
+
+            public void RegisterObserver(IObserver observer) => _observers.Add(observer);
+
+            public void NotifyObservers()
+            {
+                IEnumerator<IObserver> enumerator = _observers.GetEnumerator();
+                while (enumerator.MoveNext())
+                {
+                    IObserver observer = enumerator.Current;
+                    observer.Update(_duck);
+                }
+            }
+        }
+
+        public class Quackologist : IObserver
+        {
+            public void Update(IQuackObservable duck) => Console.WriteLine("Quackologist: " + duck + " just quacked.");
+        }
+
         public class MallardDuck : IQuackable
         {
-            // Using default implementation of IQuackable.Quack method
+
+            private readonly IQuackObservable _observable;
+
+            public MallardDuck() => _observable = new Observable(this);
+
+            public void Quack()
+            {
+                Console.WriteLine("Quack");
+                NotifyObservers();
+            }
+
+            public void RegisterObserver(IObserver observer)
+            {
+                _observable.RegisterObserver(observer);
+            }
+            public void NotifyObservers()
+            {
+                _observable.NotifyObservers();
+            }
+
+            public override string ToString() => "Mallard Duck";
         }
 
         public class RedHeadDuck : IQuackable
         {
-            // Using default implementation of IQuackable.Quack method
+            private readonly IQuackObservable _observable;
+
+            public RedHeadDuck() => _observable = new Observable(this);
+
+            public void Quack()
+            {
+                Console.WriteLine("Quack");
+                NotifyObservers();
+            }
+
+            public void RegisterObserver(IObserver observer)
+            {
+                _observable.RegisterObserver(observer);
+            }
+            public void NotifyObservers()
+            {
+                _observable.NotifyObservers();
+            }
+
+            public override string ToString() => "Red Head Duck";
         }
 
         public class RubberDuck : IQuackable
         {
-            public void Quack() => Console.WriteLine("Squeak");
+            private readonly IQuackObservable _observable;
+
+            public RubberDuck() => _observable = new Observable(this);
+
+            public void Quack()
+            {
+                Console.WriteLine("Squeak");
+                NotifyObservers();
+            }
+
+            public void RegisterObserver(IObserver observer)
+            {
+                _observable.RegisterObserver(observer);
+            }
+            public void NotifyObservers()
+            {
+                _observable.NotifyObservers();
+            }
+
+            public override string ToString() => "Rubber Duck"; 
         }
 
         public class DuckCall : IQuackable
         {
-            public void Quack() => Console.WriteLine("Kwak");
+            private readonly IQuackObservable _observable;
+
+            public DuckCall() => _observable = new Observable(this);
+
+            public void Quack()
+            {
+                Console.WriteLine("Kwak");
+                NotifyObservers();
+            }
+
+            public void RegisterObserver(IObserver observer)
+            {
+                _observable.RegisterObserver(observer);
+            }
+            public void NotifyObservers()
+            {
+                _observable.NotifyObservers();
+            }
+
+            public override string ToString() => "Duck Call";
         }
 
         #region Adapter pattern
@@ -31,29 +133,70 @@ namespace CompoundPatternDependencies
             public void Honk() => Console.WriteLine("Honk");
         }
 
-        public class GooseAdapter(Geese geese) : IQuackable
+        public class GooseAdapter : IQuackable
         {
-            private readonly Geese _geese = geese;
+            private readonly Geese _geese;
+            private readonly IQuackObservable _observable;
 
-            public void Quack() => _geese.Honk();
+            public GooseAdapter(Geese geese)
+            {
+                _geese = geese;
+                _observable = new Observable(this);
+            }
+
+            public void Quack()
+            {
+                _geese.Honk();
+                NotifyObservers();
+            }
+
+            public void RegisterObserver(IObserver observer)
+            {
+                _observable.RegisterObserver(observer);
+            }
+            public void NotifyObservers()
+            {
+                _observable.NotifyObservers();
+            }
+
+            public override string ToString() => "Geese pretending to be a Duck";
         }
 
         #endregion
 
         #region Decorator pattern
 
-        public class QuackCounterDecorator(IQuackable quackable) : IQuackable
+        public class QuackCounterDecorator : IQuackable
         {
-            private readonly IQuackable _quackable = quackable;
+            private readonly IQuackable _quackable;
+            private readonly IQuackObservable _observable;
             private static int _numberOfQuacks = 0;
+
+            public QuackCounterDecorator(IQuackable quackable)
+            {
+                _quackable = quackable;
+                _observable = new Observable(this);
+            }
 
             public void Quack()
             {
                 _quackable.Quack();
                 _numberOfQuacks++;
+                NotifyObservers();
             }
 
             public static int GetQuacks() => _numberOfQuacks;
+
+            public void RegisterObserver(IObserver observer)
+            {
+                _observable.RegisterObserver(observer);
+            }
+            public void NotifyObservers()
+            {
+                _observable.NotifyObservers();
+            }
+
+            public override string ToString() => _quackable.ToString() ?? String.Empty;
         }
 
         #endregion
@@ -121,6 +264,7 @@ namespace CompoundPatternDependencies
         public class Flock : IQuackable
         {
             private List<IQuackable> _flock = [];
+            private IQuackObservable _observable;
 
             public void Add(IQuackable quackable) => _flock.Add(quackable);
 
@@ -134,6 +278,17 @@ namespace CompoundPatternDependencies
                     quacker.Quack();
                 }
             }
+
+            public void RegisterObserver(IObserver observer)
+            {
+                IEnumerator<IQuackable> iterator = _flock.GetEnumerator();
+                while (iterator.MoveNext())
+                {
+                    IQuackable duck = iterator.Current;
+                    duck.RegisterObserver(observer);
+                }
+            }
+            public void NotifyObservers() { }
         }
 
         #endregion
