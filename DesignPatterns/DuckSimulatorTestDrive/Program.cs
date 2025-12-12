@@ -16,6 +16,7 @@ namespace DuckSimulatorTestDrive
             RedHeadDuck redHeadDuck = new();
             DuckCall duckCall = new();
             RubberDuck rubberDuck = new();
+            GooseAdapter gooseAdapter = new(new Geese());
 
             Console.WriteLine("\nDuck Simulator");
 
@@ -23,8 +24,9 @@ namespace DuckSimulatorTestDrive
             Simulate(redHeadDuck);
             Simulate(duckCall);
             Simulate(rubberDuck);
-
-            void Simulate(IQuackable quackable) => quackable.Quack();
+            Simulate(gooseAdapter);
         }
+
+        void Simulate(IQuackable quackable) => quackable.Quack();
     }
 }

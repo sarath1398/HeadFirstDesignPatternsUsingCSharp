@@ -23,5 +23,19 @@ namespace CompoundPatternDependencies
         {
             public void Quack() => Console.WriteLine("Kwak");
         }
+
+        // Adapter Pattern starts
+
+        public class Geese
+        {
+            public void Honk() => Console.WriteLine("Honk");
+        }
+
+        public class GooseAdapter(Geese geese) : IQuackable
+        {
+            private readonly Geese _geese = geese;
+
+            public void Quack() => _geese.Honk();
+        }
     }
 }
