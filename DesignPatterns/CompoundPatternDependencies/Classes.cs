@@ -37,5 +37,21 @@ namespace CompoundPatternDependencies
 
             public void Quack() => _geese.Honk();
         }
+
+        // Decorator pattern starts
+
+        public class QuackCounterDecorator(IQuackable quackable) : IQuackable
+        {
+            private readonly IQuackable _quackable = quackable;
+            private static int _numberOfQuacks = 0;
+
+            public void Quack()
+            {
+                _quackable.Quack();
+                _numberOfQuacks++;
+            }
+
+            public static int GetQuacks() => _numberOfQuacks;
+        }
     }
 }
