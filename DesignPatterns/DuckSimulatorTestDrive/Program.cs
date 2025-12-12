@@ -8,14 +8,15 @@ namespace DuckSimulatorTestDrive
         public static void Main(string[] args)
         {
             Program program = new();
-            program.Simulate();
+            AbstractDuckFactory duckFactory = new CountingDuckFactory();
+            program.Simulate(duckFactory);
         }
-        public void Simulate()
+        public void Simulate(AbstractDuckFactory duckFactory)
         {
-            IQuackable mallardDuck = new QuackCounterDecorator(new MallardDuck());
-            IQuackable redHeadDuck = new QuackCounterDecorator(new RedHeadDuck());
-            IQuackable duckCall = new QuackCounterDecorator(new DuckCall());
-            IQuackable rubberDuck = new QuackCounterDecorator(new RubberDuck());
+            IQuackable mallardDuck = duckFactory.CreateMallardDuck();
+            IQuackable redHeadDuck = duckFactory.CreateRedheadDuck();
+            IQuackable duckCall = duckFactory.CreateDuckCall();
+            IQuackable rubberDuck = duckFactory.CreateRubberDuck();
             IQuackable gooseAdapter = new GooseAdapter(new Geese());
 
             Console.WriteLine("\nDuck Simulator");

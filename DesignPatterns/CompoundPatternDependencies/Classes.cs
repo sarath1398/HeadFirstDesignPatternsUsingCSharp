@@ -24,7 +24,7 @@ namespace CompoundPatternDependencies
             public void Quack() => Console.WriteLine("Kwak");
         }
 
-        // Adapter Pattern starts
+        #region Adapter pattern
 
         public class Geese
         {
@@ -38,7 +38,9 @@ namespace CompoundPatternDependencies
             public void Quack() => _geese.Honk();
         }
 
-        // Decorator pattern starts
+        #endregion
+
+        #region Decorator pattern
 
         public class QuackCounterDecorator(IQuackable quackable) : IQuackable
         {
@@ -53,5 +55,65 @@ namespace CompoundPatternDependencies
 
             public static int GetQuacks() => _numberOfQuacks;
         }
+
+        #endregion
+
+        #region Abstract Factory pattern
+
+        public abstract class AbstractDuckFactory
+        {
+            public abstract IQuackable CreateMallardDuck();
+            public abstract IQuackable CreateRedheadDuck();
+            public abstract IQuackable CreateDuckCall();
+            public abstract IQuackable CreateRubberDuck();
+        }
+
+        public class DuckFactory : AbstractDuckFactory
+        {
+            public override IQuackable CreateMallardDuck()
+            {
+                return new MallardDuck();
+            }
+
+            public override IQuackable CreateRedheadDuck()
+            {
+                return new RedHeadDuck();
+            }
+
+            public override IQuackable CreateDuckCall()
+            {
+                return new DuckCall();
+            }
+
+            public override IQuackable CreateRubberDuck()
+            {
+                return new RubberDuck();
+            }
+        }
+
+        public class CountingDuckFactory : AbstractDuckFactory
+        {
+            public override IQuackable CreateMallardDuck()
+            {
+                return new QuackCounterDecorator(new MallardDuck());
+            }
+
+            public override IQuackable CreateRedheadDuck()
+            {
+                return new QuackCounterDecorator(new RedHeadDuck());
+            }
+
+            public override IQuackable CreateDuckCall()
+            {
+                return new QuackCounterDecorator(new DuckCall());
+            }
+
+            public override IQuackable CreateRubberDuck()
+            {
+                return new QuackCounterDecorator(new RubberDuck());
+            }
+        }
+
+        #endregion
     }
 }
