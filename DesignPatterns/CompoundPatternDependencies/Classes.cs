@@ -115,5 +115,27 @@ namespace CompoundPatternDependencies
         }
 
         #endregion
+
+        #region Composite + Iterator pattern
+
+        public class Flock : IQuackable
+        {
+            private List<IQuackable> _flock = [];
+
+            public void Add(IQuackable quackable) => _flock.Add(quackable);
+
+            public void Quack()
+            {
+                var iterator = _flock.GetEnumerator();
+
+                while (iterator.MoveNext())
+                {
+                    var quacker = iterator.Current;
+                    quacker.Quack();
+                }
+            }
+        }
+
+        #endregion
     }
 }
