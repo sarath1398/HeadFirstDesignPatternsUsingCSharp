@@ -27,7 +27,7 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
 # Leftover Patterns
 
 <p>This section is for the leftover patterns that have partial implementations or schema.</p>
-<p>Code Changes are implemented based on my understanding of the pattern</p>
+<p>Code Changes are implemented based on my understanding of the pattern -- </p>
 <ul>
   <li>Bridge Pattern - BridgePatternConsole.csproj</li>
 </ul>
