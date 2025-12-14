@@ -22,4 +22,6 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
   <li>Proxy Pattern - MatchMakingTestDrive.csproj</li>
   <li>Compound Patterns - DuckSimulatorTestDrive.csproj</li>
 </ul>
+<hr></hr>
+# The rest of the projects are based on the UML diagrams and code snippets provided in the book
 
