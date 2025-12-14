@@ -26,3 +26,6 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
 
 # The rest of the projects are based on the UML diagrams and code snippets provided in the book
 
+<ul>
+  <li>Bridge Pattern - BridgePatternConsole.csproj</li>
+</ul>
