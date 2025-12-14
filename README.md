@@ -24,8 +24,10 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
 </ul>
 <hr></hr>
 
-# The rest of the projects are based on the UML diagrams and code snippets provided in the book
+# Leftover Patterns
 
+<p>This section is for the leftover patterns that have partial implementations or schema.</p>
+<p>Code Changes are implemented based on my understanding of the pattern</p>
 <ul>
   <li>Bridge Pattern - BridgePatternConsole.csproj</li>
 </ul>
