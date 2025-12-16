@@ -30,5 +30,6 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
 <p>Code Changes are implemented based on my understanding of the pattern -- </p>
 <ul>
   <li>Bridge Pattern - BridgePatternConsole.csproj</li>
+  <li>Builder Pattern - VacationPlanner.csproj</li>
   <li>Chain of Responsibiility Pattern - MightyGumballEmailClassifier.csproj</li>
 </ul>
