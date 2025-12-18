@@ -32,4 +32,5 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
   <li>Bridge Pattern - BridgePatternConsole.csproj</li>
   <li>Builder Pattern - VacationPlanner.csproj</li>
   <li>Chain of Responsibiility Pattern - MightyGumballEmailClassifier.csproj</li>
+  <li>Flyweight Pattern - FlyweightPatternConsole.csproj</li>
 </ul>
