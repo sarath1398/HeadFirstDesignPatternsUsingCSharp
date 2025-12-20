@@ -34,4 +34,5 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
   <li>Chain of Responsibiility Pattern - MightyGumballEmailClassifier.csproj</li>
   <li>Flyweight Pattern - FlyweightPatternConsole.csproj</li>
   <li>Interpreter Pattern - DuckInterpreter.csproj</li>
+  <li>Mediator Pattern - HouseOfTheFuture.csproj</li>
 </ul>
