@@ -36,4 +36,5 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
   <li>Interpreter Pattern - DuckInterpreter.csproj</li>
   <li>Mediator Pattern - HouseOfTheFuture.csproj</li>
   <li>Memento Pattern - RPGGameClient.csproj</li>
+  <li>Prototype Pattern - MonsterMaker.csproj</li>
 </ul>
