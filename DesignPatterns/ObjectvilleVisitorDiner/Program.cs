@@ -52,7 +52,7 @@ namespace ObjectvilleVisitorDiner
             // We are not having get methods related to carbs, proteins and calories since this example
             // defines the role of a visitor better
             Console.WriteLine("\n--- Nutritional Report ---");
-            Console.WriteLine($"Total Calories: {visitor.TotalCalories}");
+            Console.WriteLine($"Total Calories: {visitor.TotalCalories}kcal");
             Console.WriteLine($"Total Protein:  {visitor.TotalProtein}g");
             Console.WriteLine($"Total Carbs:    {visitor.TotalCarbs}g");
             Console.WriteLine($"Health Rating:  {visitor.GetHealthRating()}");
