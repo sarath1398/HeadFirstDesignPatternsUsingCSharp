@@ -49,6 +49,8 @@ namespace ObjectvilleVisitorDiner
             HealthInspector visitor = new();
             allMenus.Accept(visitor);
 
+            // We are not having get methods related to carbs, proteins and calories since this example
+            // defines the role of a visitor better
             Console.WriteLine("\n--- Nutritional Report ---");
             Console.WriteLine($"Total Calories: {visitor.TotalCalories}");
             Console.WriteLine($"Total Protein:  {visitor.TotalProtein}g");
