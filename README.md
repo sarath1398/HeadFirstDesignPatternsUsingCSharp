@@ -37,4 +37,5 @@ Implementing the Design Patterns as provided in the Book - "Head First Design Pa
   <li>Mediator Pattern - HouseOfTheFuture.csproj</li>
   <li>Memento Pattern - RPGGameClient.csproj</li>
   <li>Prototype Pattern - MonsterMaker.csproj</li>
+  <li>Visitor Pattern - ObjectvilleVisitorDiner.csproj</li>
 </ul>
